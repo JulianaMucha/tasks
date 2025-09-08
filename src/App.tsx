@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import img from "./img/Elden-Ring-Ranni-The-Witch.avif";
+import img from "./img/Elden-Ring-Ranni-The-Witch.jpeg";
 
 function App(): React.JSX.Element {
     return (
