@@ -139,7 +139,19 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    // .map to convert to string
+    // .reduce to add numbers
+    const total = addends.reduce(
+        (currentTotal: number, num: number): number => (currentTotal += num),
+        0,
+    );
+    // if array is empty, return 0=0, otherwise turn to string with '+' in between each number
+    const expression =
+        addends.length > 0 ?
+            addends.map((num: number): string => num.toString()).join("+")
+        :   "0";
+    // combine sum & expression
+    return `${total}=${expression}`;
 }
 
 /**
@@ -152,5 +164,33 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    // find first negative index (if any)
+    const firstNegIndex = values.findIndex((value: number) => value < 0);
+
+    // if first negative number exists...
+    if (firstNegIndex >= 0) {
+        // sum all values before first negative index
+        const sumBefore = values
+            .slice(0, firstNegIndex)
+            .reduce(
+                (currentTotal: number, currentVal: number): number =>
+                    currentTotal + currentVal,
+                0,
+            );
+
+        // insert sum after first negative number
+        return [
+            ...values.slice(0, firstNegIndex + 1),
+            sumBefore,
+            ...values.slice(firstNegIndex + 1),
+        ];
+    } else {
+        // if there's no negative numbers, append the total sum
+        const totalSum = values.reduce(
+            (currentTotal: number, currentVal: number): number =>
+                currentTotal + currentVal,
+            0,
+        );
+        return [...values, totalSum];
+    }
 }
