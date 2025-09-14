@@ -87,7 +87,13 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const shortWords = words
+        // keep only the words < 4 letters
+        .filter((word: string): boolean => {
+            const swl = word.length < 4;
+            return swl;
+        });
+    return shortWords.length;
 }
 
 /**
@@ -96,8 +102,34 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const allColorsRBG = colors.reduce((allValid: boolean, color: string) => {
+        return (
+            allValid &&
+            (color === "red" ||
+                color === "blue" ||
+                color === "green" ||
+                color === "")
+        );
+    }, true);
+    // if there are colors left in the array, they are not RBG, therefore making this false
+    return allColorsRBG;
 }
+
+/*   THIS ALSO WORKS
+export function allRGB(colors: string[]): boolean {
+    const invalidColors = colors.filter((color: string): boolean => {
+        // delete red, blue, & green from array
+        const invalid =
+            color !== "red" &&
+            color !== "blue" &&
+            color !== "green" &&
+            color !== "";
+        return invalid;
+    });
+    // if there are colors left in the array, they are not RBG, therefore making this false
+    return invalidColors.length === 0;
+}
+*/
 
 /**
  * Consumes an array of numbers, and produces a string representation of the
