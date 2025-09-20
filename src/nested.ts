@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -74,8 +75,12 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    // const sumOfPublished = questions.reduce((currentTotal: number, ques: Question) => currentTotal + (ques.published ? 1 : 0));
-    return 0; //sumOfPublished;
+    const sumOfPublishedPoints = questions.reduce(
+        (currentTotal: number, ques: Question) =>
+            currentTotal + (ques.published ? ques.points : 0),
+        0,
+    );
+    return sumOfPublishedPoints;
 }
 
 /***
@@ -111,7 +116,15 @@ export function toCSV(questions: Question[]): string {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    const answerArray = questions.map(
+        (ques: Question): Answer => ({
+            questionId: ques.id,
+            text: "",
+            submitted: false,
+            correct: false,
+        }),
+    );
+    return answerArray;
 }
 
 /***
@@ -119,7 +132,13 @@ export function makeAnswers(questions: Question[]): Answer[] {
  * each question is now published, regardless of its previous published status.
  */
 export function publishAll(questions: Question[]): Question[] {
-    return [];
+    const publishedQuestions = questions.map(
+        (ques: Question): Question => ({
+            ...ques,
+            published: true,
+        }),
+    );
+    return publishedQuestions;
 }
 
 /***
@@ -127,7 +146,12 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    if (questions.length === 0) return true;
+    const baseType = questions[0].type;
+    const sameTypeQues = questions.every(
+        (ques: Question): boolean => ques.type === baseType,
+    );
+    return sameTypeQues;
 }
 
 /***
@@ -141,7 +165,8 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
-    return [];
+    const questions2 = [...questions, makeBlankQuestion(id, name, type)];
+    return questions2;
 }
 
 /***
