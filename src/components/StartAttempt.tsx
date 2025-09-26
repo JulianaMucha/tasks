@@ -11,7 +11,7 @@ export function StartAttempt(): React.JSX.Element {
     }
 
     function increaseAttempts(): void {
-        setAttemptCount(attemptCount + 1);
+        setAttemptCount(attemptCount + 1 >= 10 ? 9 : attemptCount + 1);
     }
 
     return (

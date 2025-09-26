@@ -27,19 +27,22 @@ export function TwoDice(): React.JSX.Element {
         return (
             leftDieValue === rightDieValue ?
                 leftDieValue === 1 ?
-                    "Lose"
-                :   "Win"
-            :   "Neither"
+                    "You Lose ☹"
+                :   "You Win!"
+            :   "Keep Playing?"
         );
     }
 
     return (
         <div>
-            left die: {"  "}
             <Button onClick={rollLeftDie}>Roll Left</Button> {"  "}
-            <span data-testid="left-die">{leftDieValue}</span> right die: {"  "}
+            Left die: {"  "}
+            <span data-testid="left-die">{leftDieValue}</span>
+            {" 🎲 "}
             <Button onClick={rollRightDie}>Roll Right</Button> {"  "}
-            <span data-testid="right-die">{rightDieValue}</span> {"  "}
+            Right die: {"  "}
+            <span data-testid="right-die">{rightDieValue}</span> {" 🎲"}
+            <br></br>
             <span data-testid="winOrLose?">{isEqualButNotOnes()}</span>
         </div>
     );
