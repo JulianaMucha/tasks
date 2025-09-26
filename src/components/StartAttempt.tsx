@@ -27,10 +27,14 @@ export function StartAttempt(): React.JSX.Element {
                 Start Quiz
             </Button>
 
+            {"  "}
+
             {/* Stop Quiz Button visibility */}
             <Button onClick={quizStopStart} disabled={!inProgress}>
                 Stop Quiz
             </Button>
+
+            {"  "}
 
             {/* Mulligan Button visibility */}
             <Button onClick={increaseAttempts} disabled={inProgress}>

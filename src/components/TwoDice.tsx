@@ -35,12 +35,11 @@ export function TwoDice(): React.JSX.Element {
 
     return (
         <div>
-            left die:
-            <Button onClick={rollLeftDie}>Roll Left</Button>
-            <span data-testid="left-die">{leftDieValue}</span>
-            right die:
-            <Button onClick={rollRightDie}>Roll Right</Button>
-            <span data-testid="right-die">{rightDieValue}</span>
+            left die: {"  "}
+            <Button onClick={rollLeftDie}>Roll Left</Button> {"  "}
+            <span data-testid="left-die">{leftDieValue}</span> right die: {"  "}
+            <Button onClick={rollRightDie}>Roll Right</Button> {"  "}
+            <span data-testid="right-die">{rightDieValue}</span> {"  "}
             <span data-testid="winOrLose?">{isEqualButNotOnes()}</span>
         </div>
     );

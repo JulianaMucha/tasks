@@ -11,6 +11,7 @@ export function RevealAnswer(): React.JSX.Element {
     return (
         <div>
             <Button onClick={toggleVisibility}>Reveal Answer</Button>
+            {"  "}
             {visible && 42}
         </div>
     );
