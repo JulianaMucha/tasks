@@ -22,12 +22,13 @@ export function ChooseTeam(): React.JSX.Element {
             setTeam([...team, newMember])
         :   setTeam(team);
 
-        setAllOptions([...allOptions]);
+        setAllOptions(allOptions.filter((member) => member !== newMember));
     }
 
     function clearTeam() {
         // team = [];
         setTeam([]);
+        setAllOptions(PEOPLE);
     }
 
     return (
