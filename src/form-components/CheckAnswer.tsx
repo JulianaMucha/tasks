@@ -13,16 +13,12 @@ export function CheckAnswer({
     }
     return (
         <div>
-            {/* <h3>Check Answer</h3> */}
+            <h3>Check Answer {givenAnswer === expectedAnswer ? "✔️" : "❌"}</h3>
             <Form.Group controlId="answer">
                 <Form.Label>What is the answer?</Form.Label>
                 <Form.Control value={givenAnswer} onChange={typeAnswer} />
             </Form.Group>
-            <div>
-                <h3>
-                    Check Answer {givenAnswer === expectedAnswer ? "✔️" : "❌"}
-                </h3>
-            </div>
+            <div></div>
         </div>
     );
 }

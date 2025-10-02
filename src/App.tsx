@@ -11,7 +11,7 @@ import { ColoredBox } from "./bad-components/ColoredBox";
 import { ShoveBox } from "./bad-components/ShoveBox";
 import { ChooseTeam } from "./bad-components/ChooseTeam";
 import { CheckAnswer } from "./form-components/CheckAnswer";
-// import { GiveAttempts } from "./form-components/GiveAttempts";
+import { GiveAttempts } from "./form-components/GiveAttempts";
 // import { EditMode } from "./form-components/EditMode";
 // import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion";
 // import { ChangeColor } from "./form-components/ChangeColor";
@@ -22,7 +22,7 @@ function App(): React.JSX.Element {
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript
                 <br></br>
-                <span style={{ color: "red" }}>Juliana Mucha</span>
+                <span style={{ color: "blue" }}>Juliana Mucha</span>
                 <br></br>
                 <span style={{ font: "verdana" }}>
                     <h1>Hi! We are using State!</h1>
@@ -31,7 +31,7 @@ function App(): React.JSX.Element {
             <hr></hr>
             <CheckAnswer expectedAnswer="42"></CheckAnswer>
             <hr></hr>
-            {/* <GiveAttempts></GiveAttempts> */}
+            <GiveAttempts></GiveAttempts>
             <hr></hr>
             {/* <EditMode></EditMode> */}
             <hr></hr>
