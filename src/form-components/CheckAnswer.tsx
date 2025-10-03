@@ -15,7 +15,7 @@ export function CheckAnswer({
         <div>
             <h3>Check Answer {givenAnswer === expectedAnswer ? "✔️" : "❌"}</h3>
             <Form.Group controlId="answer">
-                <Form.Label>What is the answer?</Form.Label>
+                <Form.Label>Pick a number between 1-100</Form.Label>
                 <Form.Control value={givenAnswer} onChange={typeAnswer} />
             </Form.Group>
             <div></div>
